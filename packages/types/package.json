@@ -1,0 +1,9 @@
+{
+  "name": "@raincheck/types",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "react": "19.2.0"
+  }
+}

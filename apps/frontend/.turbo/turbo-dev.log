@@ -1,0 +1,21 @@
+
+> frontend@0.1.0 dev /workspaces/RainCheck/apps/frontend
+> next dev
+
+ [33m[1m⚠[22m[39m Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /workspaces/RainCheck/pnpm-lock.yaml as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /workspaces/RainCheck/apps/frontend/package-lock.json
+
+   [1m[38;2;173;127;168m▲ Next.js 16.0.1[39m[22m (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.0.125:3000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 985ms
+ [37m[1m○[22m[39m Compiling / ...
+ GET / [32m200[39m in 4.3s[2m (compile: 4.1s, render: 244ms)[22m
+(node:4232) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
