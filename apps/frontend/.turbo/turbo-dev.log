@@ -1,0 +1,660 @@
+
+> frontend@0.1.0 dev /workspaces/RainCheck/apps/frontend
+> next dev
+
+   [1m[38;2;173;127;168m▲ Next.js 16.0.1[39m[22m (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://10.0.4.44:3000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1108ms
+ [37m[1m○[22m[39m Compiling / ...
+ GET / [32m200[39m in 13.5s[2m (compile: 12.9s, render: 652ms)[22m
+ [31m[1m⨯[22m[39m ReferenceError: window is not defined
+    at <unknown> (.next/dev/server/chunks/ssr/9f915_leaflet_dist_leaflet-src_778099f6.js:8:44)
+    at module evaluation (.next/dev/server/chunks/ssr/9f915_leaflet_dist_leaflet-src_778099f6.js:9:3)
+    at module evaluation (src/app/analysis/ui/MapWithPolygon.tsx:4:1)
+    at module evaluation (src/app/analysis/components/LocationAndMapSection.tsx:5:1)
+    at module evaluation (src/app/analysis/components/AnalysisLayout.tsx:5:1)
+    at module evaluation (src/app/analysis/page.tsx:2:1)
+[0m [90m 2 |[39m
+ [90m 3 |[39m [36mimport[39m { useEffect[33m,[39m useState } [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m {
+ [90m   |[39m [31m[1m^[22m[39m
+ [90m 5 |[39m   [33mMapContainer[39m[33m,[39m
+ [90m 6 |[39m   [33mTileLayer[39m[33m,[39m
+ [90m 7 |[39m   [33mPolygon[39m[33m,[39m[0m {
+  digest: [32m'86969134'[39m
+}
+ GET /analysis [31m500[39m in 1893ms[2m (compile: 1163ms, render: 730ms)[22m
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./LeafletMap'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx:7:34
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./LeafletMap'[39m
+[0m [90m  5 |[39m
+ [90m  6 |[39m [90m// Dynamically import Leaflet Map component only on client[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mconst[39m [33mLeafletMap[39m [33m=[39m dynamic(() [33m=>[39m [36mimport[39m([32m"./LeafletMap"[39m)[33m,[39m {
+ [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m   ssr[33m:[39m [36mfalse[39m[33m,[39m [90m// 👈 disables server-side rendering for this component[39m
+ [90m  9 |[39m })[33m;[39m
+ [90m 10 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./LeafletMap'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./LeafletMap'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx:7:34
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./LeafletMap'[39m
+[0m [90m  5 |[39m
+ [90m  6 |[39m [90m// Dynamically import Leaflet Map component only on client[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mconst[39m [33mLeafletMap[39m [33m=[39m dynamic(() [33m=>[39m [36mimport[39m([32m"./LeafletMap"[39m)[33m,[39m {
+ [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m   ssr[33m:[39m [36mfalse[39m[33m,[39m [90m// 👈 disables server-side rendering for this component[39m
+ [90m  9 |[39m })[33m;[39m
+ [90m 10 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./LeafletMap'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./LeafletMap'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx:7:34
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./LeafletMap'[39m
+[0m [90m  5 |[39m
+ [90m  6 |[39m [90m// Dynamically import Leaflet Map component only on client[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mconst[39m [33mLeafletMap[39m [33m=[39m dynamic(() [33m=>[39m [36mimport[39m([32m"./LeafletMap"[39m)[33m,[39m {
+ [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m   ssr[33m:[39m [36mfalse[39m[33m,[39m [90m// 👈 disables server-side rendering for this component[39m
+ [90m  9 |[39m })[33m;[39m
+ [90m 10 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [32m[1m✓[22m[39m Compiled in 415ms
+ [32m[1m✓[22m[39m Compiled in 106ms
+ GET /analysis [32m200[39m in 285ms[2m (compile: 99ms, render: 186ms)[22m
+ [32m[1m✓[22m[39m Compiled in 185ms
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ GET /analysis [32m200[39m in 413ms[2m (compile: 87ms, render: 326ms)[22m
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./L'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx:7:34
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./L'[39m
+[0m [90m  5 |[39m
+ [90m  6 |[39m [90m// Dynamically import Leaflet Map component only on client[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mconst[39m [33mLeafletMap[39m [33m=[39m dynamic(() [33m=>[39m [36mimport[39m([32m"./L"[39m)[33m,[39m {
+ [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m   ssr[33m:[39m [36mfalse[39m[33m,[39m [90m// 👈 disables server-side rendering for this component[39m
+ [90m  9 |[39m })[33m;[39m
+ [90m 10 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./L'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./L'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx:7:34
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./L'[39m
+[0m [90m  5 |[39m
+ [90m  6 |[39m [90m// Dynamically import Leaflet Map component only on client[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mconst[39m [33mLeafletMap[39m [33m=[39m dynamic(() [33m=>[39m [36mimport[39m([32m"./L"[39m)[33m,[39m {
+ [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m   ssr[33m:[39m [36mfalse[39m[33m,[39m [90m// 👈 disables server-side rendering for this component[39m
+ [90m  9 |[39m })[33m;[39m
+ [90m 10 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./L'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./L'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx:7:34
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./L'[39m
+[0m [90m  5 |[39m
+ [90m  6 |[39m [90m// Dynamically import Leaflet Map component only on client[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mconst[39m [33mLeafletMap[39m [33m=[39m dynamic(() [33m=>[39m [36mimport[39m([32m"./L"[39m)[33m,[39m {
+ [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m   ssr[33m:[39m [36mfalse[39m[33m,[39m [90m// 👈 disables server-side rendering for this component[39m
+ [90m  9 |[39m })[33m;[39m
+ [90m 10 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [32m[1m✓[22m[39m Compiled in 131ms
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./Leaf'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx:7:34
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./Leaf'[39m
+[0m [90m  5 |[39m
+ [90m  6 |[39m [90m// Dynamically import Leaflet Map component only on client[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mconst[39m [33mLeafletMap[39m [33m=[39m dynamic(() [33m=>[39m [36mimport[39m([32m"./Leaf"[39m)[33m,[39m {
+ [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m   ssr[33m:[39m [36mfalse[39m[33m,[39m [90m// 👈 disables server-side rendering for this component[39m
+ [90m  9 |[39m })[33m;[39m
+ [90m 10 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./Leaf'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./Leaf'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx:7:34
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./Leaf'[39m
+[0m [90m  5 |[39m
+ [90m  6 |[39m [90m// Dynamically import Leaflet Map component only on client[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mconst[39m [33mLeafletMap[39m [33m=[39m dynamic(() [33m=>[39m [36mimport[39m([32m"./Leaf"[39m)[33m,[39m {
+ [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m   ssr[33m:[39m [36mfalse[39m[33m,[39m [90m// 👈 disables server-side rendering for this component[39m
+ [90m  9 |[39m })[33m;[39m
+ [90m 10 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./Leaf'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./Leaf'[39m
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [31m[1m⨯[22m[39m ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx:7:34
+[1m[31mModule not found[39m[22m: Can't resolve [32m'./Leaf'[39m
+[0m [90m  5 |[39m
+ [90m  6 |[39m [90m// Dynamically import Leaflet Map component only on client[39m
+[31m[1m>[22m[39m[90m  7 |[39m [36mconst[39m [33mLeafletMap[39m [33m=[39m dynamic(() [33m=>[39m [36mimport[39m([32m"./Leaf"[39m)[33m,[39m {
+ [90m    |[39m                                  [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m  8 |[39m   ssr[33m:[39m [36mfalse[39m[33m,[39m [90m// 👈 disables server-side rendering for this component[39m
+ [90m  9 |[39m })[33m;[39m
+ [90m 10 |[39m[0m
+
+
+
+Import traces:
+  Client Component Browser:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component Browser]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./apps/frontend/src/app/analysis/ui/MapWithPolygon.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/LocationAndMapSection.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/components/AnalysisLayout.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Client Component SSR]
+    ./apps/frontend/src/app/analysis/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+ [32m[1m✓[22m[39m Compiled in 73ms
+ [32m[1m✓[22m[39m Compiled in 116ms
+ GET /analysis [32m200[39m in 39ms[2m (compile: 12ms, render: 28ms)[22m
+ GET /analysis [32m200[39m in 65ms[2m (compile: 4ms, render: 61ms)[22m
+ [32m[1m✓[22m[39m Compiled in 156ms
+ [32m[1m✓[22m[39m Compiled in 226ms
+ [31m[1m⨯[22m[39m ReferenceError: window is not defined
+    at <unknown> (.next/dev/server/chunks/ssr/9f915_leaflet_dist_leaflet-src_778099f6.js:8:44)
+    at module evaluation (.next/dev/server/chunks/ssr/9f915_leaflet_dist_leaflet-src_778099f6.js:9:3)
+    at module evaluation (src/app/analysis/ui/MapWithPolygon.tsx:4:1)
+    at module evaluation (src/app/analysis/components/LocationAndMapSection.tsx:5:1)
+    at module evaluation (src/app/analysis/components/AnalysisLayout.tsx:5:1)
+    at module evaluation (src/app/analysis/page.tsx:2:1)
+[0m [90m 2 |[39m
+ [90m 3 |[39m [36mimport[39m { useEffect[33m,[39m useState } [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m {
+ [90m   |[39m [31m[1m^[22m[39m
+ [90m 5 |[39m   [33mMapContainer[39m[33m,[39m
+ [90m 6 |[39m   [33mTileLayer[39m[33m,[39m
+ [90m 7 |[39m   [33mPolygon[39m[33m,[39m[0m {
+  digest: [32m'86969134'[39m
+}
+ GET /analysis [31m500[39m in 928ms[2m (compile: 133ms, render: 794ms)[22m
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
