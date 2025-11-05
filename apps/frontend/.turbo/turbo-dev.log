@@ -4,19 +4,27 @@
 
    [1m[38;2;173;127;168m▲ Next.js 16.0.1[39m[22m (Turbopack)
    - Local:        http://localhost:3000
-   - Network:      http://10.0.4.44:3000
+   - Network:      http://10.0.2.52:3000
+   - Environments: .env.local
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 1207ms
- [37m[1m○[22m[39m Compiling / ...
- GET / [32m200[39m in 13.1s[2m (compile: 12.4s, render: 670ms)[22m
- GET /analysis [32m200[39m in 2.5s[2m (compile: 2.2s, render: 280ms)[22m
- [32m[1m✓[22m[39m Compiled in 935ms
- GET /analysis [32m200[39m in 470ms[2m (compile: 93ms, render: 376ms)[22m
- [32m[1m✓[22m[39m Compiled in 207ms
- GET /analysis [32m200[39m in 334ms[2m (compile: 40ms, render: 294ms)[22m
- [32m[1m✓[22m[39m Compiled in 237ms
- [32m[1m✓[22m[39m Compiled in 48ms
- GET /analysis [32m200[39m in 373ms[2m (compile: 52ms, render: 322ms)[22m
- [32m[1m✓[22m[39m Compiled in 64ms
- [32m[1m✓[22m[39m Compiled in 46ms
+ [32m[1m✓[22m[39m Ready in 1445ms
+ [37m[1m○[22m[39m Compiling /analysis ...
+ GET /analysis [32m200[39m in 14.1s[2m (compile: 13.6s, render: 558ms)[22m
+ [32m[1m✓[22m[39m Compiled in 338ms
+ [32m[1m✓[22m[39m Compiled in 208ms
+ GET /analysis [32m200[39m in 532ms[2m (compile: 47ms, render: 485ms)[22m
+ [32m[1m✓[22m[39m Compiled in 129ms
+ GET /analysis [32m200[39m in 268ms[2m (compile: 43ms, render: 225ms)[22m
+ [32m[1m✓[22m[39m Compiled in 85ms
+ GET /analysis [32m200[39m in 336ms[2m (compile: 42ms, render: 294ms)[22m
+ [32m[1m✓[22m[39m Compiled in 1044ms
+ GET /analysis [32m200[39m in 490ms[2m (compile: 51ms, render: 438ms)[22m
+ [32m[1m✓[22m[39m Compiled in 185ms
+ [32m[1m✓[22m[39m Compiled in 134ms
+ [32m[1m✓[22m[39m Compiled in 138ms
+ [32m[1m✓[22m[39m Compiled in 96ms
+ [32m[1m✓[22m[39m Compiled in 189ms
+ [32m[1m✓[22m[39m Compiled in 125ms
+ GET /analysis [32m200[39m in 326ms[2m (compile: 47ms, render: 279ms)[22m
+ GET /analysis [32m200[39m in 83ms[2m (compile: 5ms, render: 78ms)[22m
