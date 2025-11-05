@@ -1,6 +1,6 @@
 "use client";
 
-export default function DownloadPlanPDF({ plan }: { plan?: any }) {
+export default function DownloadPlanPDF({ plan, preferences, analysis }: { plan?: any, preferences?: any, analysis?: any }) {
   function handleDownload() {
     // placeholder - integrate with your PdfReportGenerator
     alert("Download plan (mock). Integrate real PDF generator in services.");

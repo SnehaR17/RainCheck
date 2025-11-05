@@ -57,37 +57,52 @@ export default class ModelPlanParser {
    * even if the model output was incomplete.
    */
   static normalize(data: any) {
-    return {
-      tank: {
-        recommendedSizeL: data?.tank?.recommendedSizeL ?? 0,
-        type: data?.tank?.type ?? "Not specified",
-        alternatives: data?.tank?.alternatives ?? [],
-        justification: data?.tank?.justification ?? "No justification provided.",
-      },
-      filtration: {
-        firstFlush: data?.filtration?.firstFlush ?? "Not provided",
-        filters: data?.filtration?.filters ?? [],
-        notes: data?.filtration?.notes ?? "",
-      },
-      cost: {
-        estimatedINR: data?.cost?.estimatedINR ?? 0,
-        installationINR: data?.cost?.installationINR ?? 0,
-        subsidyINR: data?.cost?.subsidyINR ?? 0,
-        netCostINR: data?.cost?.netCostINR ?? 0,
-      },
-      subsidies: Array.isArray(data?.subsidies) ? data.subsidies : [],
-      vendors: Array.isArray(data?.vendors) ? data.vendors : [],
-      timeline: Array.isArray(data?.timeline) ? data.timeline : [],
-      maintenance: {
-        tasks: data?.maintenance?.tasks ?? [],
-        frequency: data?.maintenance?.frequency ?? "Not specified",
-      },
-      meta: {
-        confidence: data?.meta?.confidence ?? 0,
-        notes: data?.meta?.notes ?? "No notes available.",
-      },
-    };
-  }
+  const defaultTimeline = [
+    { title: "Site Inspection & Load Check", desc: "Evaluate roof capacity and water flow feasibility." },
+    { title: "Tank Procurement", desc: "Order and deliver the recommended tank based on site data." },
+    { title: "Filtration & First-Flush Installation", desc: "Install pre-filtration and debris removal systems." },
+    { title: "Piping & Overflow/Recharge Setup", desc: "Connect inflow, overflow, and recharge systems." },
+    { title: "Testing & Commissioning", desc: "Run test flow and finalize connections for operation." },
+  ];
+
+  return {
+    tank: {
+      recommendedSizeL: data?.tank?.recommendedSizeL ?? 0,
+      type: data?.tank?.type ?? "Not specified",
+      alternatives: data?.tank?.alternatives ?? [],
+      justification: data?.tank?.justification ?? "No justification provided.",
+    },
+    filtration: {
+      firstFlush: data?.filtration?.firstFlush ?? "Not provided",
+      filters: data?.filtration?.filters ?? [],
+      notes: data?.filtration?.notes ?? "",
+    },
+    cost: {
+      estimatedINR: data?.cost?.estimatedINR ?? 0,
+      installationINR: data?.cost?.installationINR ?? 0,
+      subsidyINR: data?.cost?.subsidyINR ?? 0,
+      netCostINR: data?.cost?.netCostINR ?? 0,
+    },
+    subsidies: Array.isArray(data?.subsidies) ? data.subsidies : [],
+    vendors: Array.isArray(data?.vendors) ? data.vendors : [],
+    
+    // 🧩 FIX: Always return a timeline — fallback if missing
+    timeline:
+      Array.isArray(data?.timeline) && data.timeline.length > 0
+        ? data.timeline
+        : defaultTimeline,
+
+    maintenance: {
+      tasks: data?.maintenance?.tasks ?? [],
+      frequency: data?.maintenance?.frequency ?? "Not specified",
+    },
+    meta: {
+      confidence: data?.meta?.confidence ?? 0,
+      notes: data?.meta?.notes ?? "No notes available.",
+    },
+  };
+}
+
 
   /**
    * Returns a fully empty plan structure (used as fallback).

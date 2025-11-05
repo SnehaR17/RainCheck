@@ -29,7 +29,8 @@ export default class PlanningPromptBuilder {
     const tankSize = analysis?.tankSize || "unknown";
     const feasibility = analysis?.feasibility || "not specified";
     const savings = analysis?.economicAnalysis?.netSavings10yr || "unknown";
-    const rechargePotential = analysis?.environmentalImpact?.groundwaterRecharge || "unknown";
+    const rechargePotential =
+      analysis?.environmentalImpact?.groundwaterRecharge || "unknown";
     const climateTrend = analysis?.climateTrend?.climateResilience || "unknown";
 
     // Build the structured prompt
@@ -124,62 +125,80 @@ Return **only** valid JSON (no markdown, no explanations).
     await new Promise((res) => setTimeout(res, 1200));
 
     // Mock structured output
-    return JSON.stringify(
-      {
-        tank: {
-          recommendedSizeL: 8000,
-          type: "RCC",
-          alternatives: ["HDPE Modular", "Underground Concrete"],
-          justification: "Based on rainfall and roof area, RCC tanks are cost-effective and durable.",
-        },
-        filtration: {
-          firstFlush: "3 mm mesh diverter",
-          filters: ["Sand filter", "Charcoal filter"],
-          notes: "Ensures removal of debris and organic matter before storage.",
-        },
-        cost: {
-          estimatedINR: 42000,
-          installationINR: 6000,
-          subsidyINR: 15000,
-          netCostINR: 33000,
-        },
-        subsidies: [
-          {
-            scheme: "City RWH Rebate",
-            eligible: true,
-            docsRequired: ["Property ID", "Aadhaar", "Installation Invoice"],
-            applyUrl: "https://gov.example.in/rwh-subsidy",
-          },
-        ],
-        vendors: [
-          {
-            name: "EcoTank Solutions",
-            distanceKm: 5,
-            specialty: "Tank fabrication & installation",
-          },
-          {
-            name: "GreenFlow Filters",
-            distanceKm: 3,
-            specialty: "Filter system setup",
-          },
-        ],
-        timeline: [
-          { step: "Site survey & design", durationDays: 5, owner: "Vendor" },
-          { step: "Material procurement", durationDays: 3, owner: "User" },
-          { step: "Tank installation", durationDays: 4, owner: "Vendor" },
-          { step: "Testing & verification", durationDays: 2, owner: "User" },
-        ],
-        maintenance: {
-          tasks: ["Clean filter", "Check first-flush valve", "Inspect tank for cracks"],
-          frequency: "Every 6 months",
-        },
-        meta: {
-          confidence: 0.92,
-          notes: "Plan optimized for medium budget & partial dependency goal.",
-        },
+    const mockPlan = {
+      tank: {
+        recommendedSizeL: 8000,
+        type: "Underground Concrete",
+        alternatives: ["HDPE Modular", "FRP"],
+        justification:
+          "An underground concrete tank offers excellent durability and thermal stability, making it ideal for long-term water storage and minimal evaporation loss in moderate climates.",
       },
-      null,
-      2
-    );
+      filtration: {
+        firstFlush: "3 mm mesh diverter",
+        filters: ["Sand filter", "Charcoal filter", "UV purifier (optional)"],
+        notes:
+          "These filters ensure removal of debris and organic matter before water reaches the storage tank, maintaining water quality for domestic reuse.",
+      },
+      cost: {
+        estimatedINR: 95000,
+        installationINR: 15000,
+        subsidyINR: 20000,
+        netCostINR: 90000,
+      },
+      subsidies: [
+        {
+          scheme: "Karnataka Urban RWH Subsidy",
+          eligible: true,
+          docsRequired: ["Property tax receipt", "Installation bill", "Aadhaar"],
+          applyUrl: "https://urbanwaterscheme.karnataka.gov.in",
+        },
+        {
+          scheme: "National Water Mission Incentive",
+          eligible: false,
+          docsRequired: [],
+          applyUrl: "https://nwm.gov.in/incentives",
+        },
+      ],
+      vendors: [
+        {
+          name: "EcoTank Solutions",
+          distanceKm: 5,
+          specialty: "RCC & modular tank fabrication and setup",
+        },
+        {
+          name: "RainCatch Systems",
+          distanceKm: 8,
+          specialty: "Rainwater filtration and plumbing integration",
+        },
+        {
+          name: "Urban Aqua Services",
+          distanceKm: 4,
+          specialty: "Annual maintenance & inspection service",
+        },
+      ],
+      timeline: [
+        { step: "Site survey & design", durationDays: 5, owner: "Vendor" },
+        { step: "Material procurement", durationDays: 3, owner: "User" },
+        { step: "Tank installation", durationDays: 4, owner: "Vendor" },
+        { step: "Filtration system integration", durationDays: 3, owner: "Vendor" },
+        { step: "Testing & verification", durationDays: 2, owner: "User" },
+      ],
+      maintenance: {
+        tasks: [
+          "Clean filter mesh and replace charcoal every 6 months",
+          "Check and clean first-flush diverter every 3 months",
+          "Inspect for cracks or blockages annually",
+        ],
+        frequency: "Every 3–6 months based on usage and rainfall frequency",
+      },
+      meta: {
+        confidence: 0.94,
+        notes:
+          "Plan optimized for medium budget, partial water dependency goal, and high feasibility category based on local rainfall patterns.",
+      },
+    };
+
+    console.log("✅ Mock model generated plan successfully.");
+    return JSON.stringify(mockPlan, null, 2);
   }
 }

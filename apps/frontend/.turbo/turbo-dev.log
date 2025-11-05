@@ -7,17 +7,30 @@
    - Network:      http://192.168.80.1:3000
 
  ✓ Starting...
- ✓ Ready in 2.2s
- ○ Compiling /_not-found/page ...
- GET /planning 404 in 4.6s (compile: 4.5s, render: 166ms)
- GET /planning 404 in 154ms (compile: 23ms, render: 132ms)
- GET /planning 200 in 2.5s (compile: 2.4s, render: 107ms)
- GET /planning 200 in 58ms (compile: 21ms, render: 36ms)
- GET /planning 200 in 63ms (compile: 13ms, render: 50ms)
- GET /planning 200 in 39ms (compile: 10ms, render: 29ms)
- GET /planning 200 in 29ms (compile: 6ms, render: 24ms)
- GET /planning 200 in 38ms (compile: 10ms, render: 28ms)
- GET /planning 200 in 46ms (compile: 10ms, render: 36ms)
- GET /planning 200 in 36ms (compile: 7ms, render: 29ms)
- GET /planning 200 in 35ms (compile: 8ms, render: 27ms)
- GET /planning 200 in 42ms (compile: 6ms, render: 36ms)
+ ✓ Ready in 1141ms
+ ○ Compiling /planning ...
+ GET /planning 200 in 4.1s (compile: 3.9s, render: 220ms)
+ ✓ Compiled in 182ms
+ ✓ Compiled in 106ms
+ ✓ Compiled in 158ms
+ ✓ Compiled in 228ms
+ ✓ Compiled in 135ms
+ ✓ Compiled in 213ms
+ ✓ Compiled in 161ms
+ ✓ Compiled in 182ms
+ ✓ Compiled in 89ms
+ GET /planning 200 in 244ms (compile: 149ms, render: 95ms)
+ ✓ Compiled in 102ms
+ ✓ Compiled in 148ms
+ GET /planning 200 in 125ms (compile: 86ms, render: 39ms)
+ ✓ Compiled in 165ms
+ ✓ Compiled in 138ms
+ ✓ Compiled in 132ms
+ ✓ Compiled in 129ms
+ ✓ Compiled in 121ms
+ ✓ Compiled in 115ms
+ ✓ Compiled in 174ms
+ ✓ Compiled in 100ms
+ ✓ Compiled in 147ms
+ ✓ Compiled in 216ms
+ GET /planning 200 in 368ms (compile: 229ms, render: 139ms)

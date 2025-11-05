@@ -21,36 +21,45 @@ export default function PlanningLayout() {
   const [preferences, setPreferences] = useState<any>({});
   const [plan, setPlan] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
+  // 🔹 Load mock analysis for standalone testing
   useEffect(() => {
-  // Load mock analysis (replace with actual integration later)
-  const mock =
-    (window as any).__RAINCHECK_MOCK_ANALYSIS__ ||
-    {
-      roofArea: 120,
-      annualRainfall: 900,
-      annualHarvest: 85000,
-      tankSize: 8000,
-      feasibility: "High",
-      economicAnalysis: { netSavings10yr: "₹42,000" },
-      environmentalImpact: { groundwaterRecharge: "Moderate" },
-      climateTrend: { climateResilience: "Good" },
-    };
+    const mock =
+      (window as any).__RAINCHECK_MOCK_ANALYSIS__ || {
+        roofArea: 120,
+        annualRainfall: 900,
+        annualHarvest: 85000,
+        tankSize: 8000,
+        feasibility: "High",
+        economicAnalysis: { netSavings10yr: "₹42,000" },
+        environmentalImpact: { groundwaterRecharge: "Moderate" },
+        climateTrend: { climateResilience: "Good" },
+      };
 
-  setAnalysis(mock);
-}, []);
+    setAnalysis(mock);
+  }, []);
 
-
+  // 🔹 Generate full plan from preferences + analysis
   async function handleGeneratePlan(pref: any) {
+    if (!analysis) {
+      setError("Analysis data missing. Please run analysis first.");
+      return;
+    }
+
     setPreferences(pref);
     setLoading(true);
+    setError(null);
+
     try {
       const prompt = PlanningPromptBuilder.build({ analysis, preferences: pref });
       const raw = await PlanningPromptBuilder.mockCallModel(prompt);
       const parsed = ModelPlanParser.parse(raw);
+      console.log("✅ Parsed Plan:", parsed); // Debug log (remove in prod)
       setPlan(parsed);
-    } catch (e) {
-      console.error("Plan generation failed:", e);
+    } catch (e: any) {
+      console.error("❌ Plan generation failed:", e);
+      setError("Failed to generate plan. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -98,7 +107,31 @@ export default function PlanningLayout() {
               className="flex flex-col items-center justify-center p-10 bg-[#0F1412]/60 rounded-2xl border border-[#1f2a26] shadow-inner"
             >
               <div className="h-10 w-10 border-4 border-amber-400 border-t-transparent rounded-full animate-spin mb-4"></div>
-              <p className="text-amber-300 text-lg">Generating your personalized plan...</p>
+              <p className="text-amber-300 text-lg">
+                Generating your personalized plan...
+              </p>
+            </motion.div>
+          )}
+
+          {/* Error Message */}
+          {!loading && error && (
+            <div className="text-center text-red-400 bg-red-500/10 border border-red-500/30 rounded-xl p-4">
+              {error}
+            </div>
+          )}
+
+          {/* Placeholder before generation */}
+          {!loading && !plan && !error && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="p-8 rounded-2xl text-center text-gray-400 border border-white/10 bg-white/5 backdrop-blur-md"
+            >
+              <p>
+                Adjust your preferences and click{" "}
+                <span className="text-amber-300 font-medium">Generate Plan</span>{" "}
+                to create your personalized rainwater harvesting roadmap.
+              </p>
             </motion.div>
           )}
 
@@ -106,6 +139,7 @@ export default function PlanningLayout() {
           <AnimatePresence>
             {plan && !loading && (
               <>
+                {/* Tank Recommendation */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -115,6 +149,7 @@ export default function PlanningLayout() {
                   <TankRecommendationCard analysis={analysis} plan={plan} />
                 </motion.div>
 
+                {/* Subsidies */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -125,6 +160,7 @@ export default function PlanningLayout() {
                   <SubsidyEligibilityChecker analysis={analysis} plan={plan} />
                 </motion.div>
 
+                {/* Vendors */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -135,6 +171,7 @@ export default function PlanningLayout() {
                   <VendorRecommendationPanel analysis={analysis} plan={plan} />
                 </motion.div>
 
+                {/* Timeline */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -153,7 +190,7 @@ export default function PlanningLayout() {
                   transition={{ delay: 0.4 }}
                   className="flex flex-wrap gap-3 justify-end"
                 >
-                  <DownloadPlanPDF plan={plan} />
+                  <DownloadPlanPDF plan={plan} preferences={preferences} analysis={analysis} />
                   <button className="px-4 py-2 rounded-xl border border-amber-400 text-amber-300 hover:bg-amber-400 hover:text-black transition-all">
                     Save Plan
                   </button>
