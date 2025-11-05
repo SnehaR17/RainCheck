@@ -34,7 +34,7 @@ export default function UserPreferenceForm({
         </p>
       </div>
 
-      {/* Form */}
+      {/* Form Fields */}
       <div className="space-y-5">
         {/* ===== Budget ===== */}
         <div className="flex flex-col">
@@ -47,15 +47,9 @@ export default function UserPreferenceForm({
               onChange={(e) => setBudget(e.target.value)}
               className="w-full appearance-none bg-[#0B0E0C]/60 backdrop-blur-md border border-white/10 text-gray-100 rounded-xl px-3 py-2 pr-10 focus:ring-2 focus:ring-amber-400/80 focus:shadow-[0_0_15px_rgba(245,158,11,0.25)] transition-all outline-none"
             >
-              <option className="bg-[#0B0E0C]/80 text-gray-100" value="low">
-                Low
-              </option>
-              <option className="bg-[#0B0E0C]/80 text-gray-100" value="medium">
-                Medium
-              </option>
-              <option className="bg-[#0B0E0C]/80 text-gray-100" value="high">
-                High
-              </option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
             </select>
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none group-hover:text-amber-300 transition-all" />
           </div>
@@ -72,12 +66,8 @@ export default function UserPreferenceForm({
               onChange={(e) => setGoal(e.target.value)}
               className="w-full appearance-none bg-[#0B0E0C]/60 backdrop-blur-md border border-white/10 text-gray-100 rounded-xl px-3 py-2 pr-10 focus:ring-2 focus:ring-emerald-400/80 focus:shadow-[0_0_15px_rgba(16,185,129,0.25)] transition-all outline-none"
             >
-              <option className="bg-[#0B0E0C]/80 text-gray-100" value="partial">
-                Partial (supplement)
-              </option>
-              <option className="bg-[#0B0E0C]/80 text-gray-100" value="full">
-                Full (primary)
-              </option>
+              <option value="partial">Partial (supplement)</option>
+              <option value="full">Full (primary)</option>
             </select>
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none group-hover:text-emerald-300 transition-all" />
           </div>
@@ -94,12 +84,8 @@ export default function UserPreferenceForm({
               onChange={(e) => setMaintenance(e.target.value)}
               className="w-full appearance-none bg-[#0B0E0C]/60 backdrop-blur-md border border-white/10 text-gray-100 rounded-xl px-3 py-2 pr-10 focus:ring-2 focus:ring-sky-400/80 focus:shadow-[0_0_15px_rgba(56,189,248,0.25)] transition-all outline-none"
             >
-              <option className="bg-[#0B0E0C]/80 text-gray-100" value="professional">
-                Professional
-              </option>
-              <option className="bg-[#0B0E0C]/80 text-gray-100" value="diy">
-                DIY
-              </option>
+              <option value="professional">Professional</option>
+              <option value="diy">DIY</option>
             </select>
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none group-hover:text-sky-300 transition-all" />
           </div>
@@ -119,24 +105,24 @@ export default function UserPreferenceForm({
         </div>
       </div>
 
-      {/* ===== Submit Button ===== */}
-      <motion.button
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        onClick={handleSubmit}
-        disabled={loading}
-        className={`w-full py-3 rounded-xl font-semibold tracking-wide transition-all ${
-          loading
-            ? "bg-emerald-700/40 text-gray-300 cursor-wait"
-            : "bg-gradient-to-r from-amber-400 to-emerald-400 text-black hover:from-amber-300 hover:to-emerald-300"
-        }`}
-      >
-        {loading ? "Generating..." : "Generate Plan"}
-      </motion.button>
+      {/* ===== Submit Button (hydration-safe) ===== */}
+      <div className="mt-6">
+        <button
+          onClick={handleSubmit}
+          disabled={loading}
+          className={`w-full py-3 rounded-xl font-semibold tracking-wide transition-transform duration-200 ${
+            loading
+              ? "bg-emerald-700/40 text-gray-300 cursor-wait"
+              : "bg-gradient-to-r from-amber-400 to-emerald-400 text-black hover:scale-[1.03] active:scale-[0.97] hover:from-amber-300 hover:to-emerald-300"
+          }`}
+        >
+          {loading ? "Generating..." : "Generate Plan"}
+        </button>
 
-      <p className="text-xs text-gray-500 text-center mt-2">
-        Takes less than 10 seconds ✨
-      </p>
+        <p className="text-xs text-gray-500 text-center mt-2">
+          Takes less than 10 seconds ✨
+        </p>
+      </div>
     </motion.div>
   );
 }

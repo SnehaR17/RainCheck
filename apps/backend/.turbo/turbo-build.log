@@ -1,0 +1,4 @@
+
+> @raincheck/backend@0.1.0 build C:\Users\sneha\Documents\sneha_code\RainCheck\apps\backend
+> tsc -p tsconfig.json
+

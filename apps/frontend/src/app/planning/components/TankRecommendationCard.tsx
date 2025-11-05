@@ -55,7 +55,7 @@ export default function TankRecommendationCard({
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg text-gray-400 text-center"
+        className="p-6 rounded-2xl border border-white/10 bg-[#0F1412]/60 backdrop-blur-md text-gray-400 text-center"
       >
         <p>No analysis data available. Run analysis first.</p>
       </motion.div>
@@ -67,7 +67,7 @@ export default function TankRecommendationCard({
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="relative p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] transition-all duration-500"
+      className="relative p-6 rounded-2xl bg-[#0F1412]/60 backdrop-blur-md border border-white/10 shadow-[0_0_20px_rgba(16,185,129,0.05)] hover:shadow-[0_0_25px_rgba(16,185,129,0.15)] transition-all duration-500 font-[Geist] text-gray-100"
     >
       {/* Header */}
       <div className="flex items-center gap-3 mb-5">
@@ -110,7 +110,7 @@ export default function TankRecommendationCard({
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + i * 0.1 }}
-              className="rounded-lg bg-white/5 border border-white/10 text-center py-3 backdrop-blur-sm"
+              className="rounded-lg bg-[#0B0E0C]/60 border border-white/10 text-center py-3 backdrop-blur-sm"
             >
               <p className="text-[13px] text-gray-400 mb-1">{label}</p>
               <p
@@ -139,13 +139,12 @@ export default function TankRecommendationCard({
 
         <div className="grid md:grid-cols-2 gap-5">
           {alternatives.map((type: string, idx: number) => {
-            const stats: TankStats = tankStats[
-              type as keyof typeof tankStats
-            ] || {
-              durability: "Medium",
-              maintenance: "Medium",
-              cost: "Moderate",
-            };
+            const stats: TankStats =
+              tankStats[type as keyof typeof tankStats] || {
+                durability: "Medium",
+                maintenance: "Medium",
+                cost: "Moderate",
+              };
             const isSelected: boolean = type === selected;
 
             return (
@@ -160,7 +159,7 @@ export default function TankRecommendationCard({
                           ${
                             isSelected
                               ? "bg-emerald-500/20 border-emerald-400/50 shadow-[0_0_25px_rgba(16,185,129,0.25)]"
-                              : "bg-white/5 border-white/10 hover:border-amber-400/40"
+                              : "bg-[#0B0E0C]/60 border-white/10 hover:border-amber-400/40"
                           }`}
               >
                 <p
@@ -179,7 +178,7 @@ export default function TankRecommendationCard({
                         initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + i * 0.1 }}
-                        className="rounded-lg bg-white/5 border border-white/10 text-center py-2 backdrop-blur-sm"
+                        className="rounded-lg bg-[#0F1412]/60 border border-white/10 text-center py-2 backdrop-blur-sm"
                       >
                         <p className="text-[13px] text-gray-400 mb-1">
                           {label}
@@ -215,7 +214,7 @@ export default function TankRecommendationCard({
             transition={{ duration: 0.3 }}
             className="mt-6 overflow-hidden"
           >
-            <div className="p-5 rounded-2xl bg-[#0B0E0C]/70 border border-white/10">
+            <div className="p-5 rounded-2xl bg-[#0F1412]/60 border border-white/10 backdrop-blur-md">
               <div className="flex gap-3">
                 <Info className="h-5 w-5 text-emerald-300 mt-0.5" />
                 <p className="text-gray-300 text-sm leading-relaxed">

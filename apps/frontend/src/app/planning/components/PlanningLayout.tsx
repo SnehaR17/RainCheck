@@ -2,19 +2,39 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+// Components
 import UserPreferenceForm from "./UserPreferenceForm";
 import TankRecommendationCard from "./TankRecommendationCard";
 import SubsidyEligibilityChecker from "./SubsidyEligibilityChecker";
 import VendorRecommendationPanel from "./VendorRecommendationPanel";
 import TimelineAndTasksBoard from "./TimelineAndTasksBoard";
 import DownloadPlanPDF from "./DownloadPlanPDF";
+import BudgetEstimator from "./BudgetEstimator";
+
+// Services
 import PlanningPromptBuilder from "../services/PlanningPromptBuilder";
 import ModelPlanParser from "../services/ModelPlanParser";
 
 /**
- * PlanningLayout - orchestrates data flow & renders sections elegantly
- * Modern minimalist redesign with smooth transitions and compact layout.
+ * PlanningLayout
+ * Orchestrates the flow between user preferences, analysis, and AI-generated planning output.
+ * Includes hydration-safe patch and modern glass UI layout.
  */
+
+// 🧼 Hydration-safe cleanup patch
+if (typeof window !== "undefined") {
+  window.addEventListener("DOMContentLoaded", () => {
+    // Remove unwanted injected attributes (by Grammarly, MS Editor, etc.)
+    document
+      .querySelectorAll("[fdprocessedid],[data-gramm],[data-ms-editor]")
+      .forEach((el) => {
+        el.removeAttribute("fdprocessedid");
+        el.removeAttribute("data-gramm");
+        el.removeAttribute("data-ms-editor");
+      });
+  });
+}
 
 export default function PlanningLayout() {
   const [analysis, setAnalysis] = useState<any | null>(null);
@@ -23,24 +43,34 @@ export default function PlanningLayout() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // 🔹 Load mock analysis for standalone testing
+  // 🔹 Load sample analysis
   useEffect(() => {
     const mock =
       (window as any).__RAINCHECK_MOCK_ANALYSIS__ || {
         roofArea: 120,
-        annualRainfall: 900,
-        annualHarvest: 85000,
+        annualRainfall: 950,
+        annualHarvest: 91200,
         tankSize: 8000,
         feasibility: "High",
-        economicAnalysis: { netSavings10yr: "₹42,000" },
-        environmentalImpact: { groundwaterRecharge: "Moderate" },
-        climateTrend: { climateResilience: "Good" },
+        economicAnalysis: {
+          installationCost: 42000,
+          paybackPeriod: 23,
+          roi: 4.3,
+          netSavings10yr: -23760,
+          subsidyEligible: true,
+        },
+        environmentalImpact: {
+          groundwaterRecharge: 54720,
+          co2SavedTons: 9.12,
+        },
+        climateTrend: {
+          climateResilience: "Good",
+        },
       };
-
     setAnalysis(mock);
   }, []);
 
-  // 🔹 Generate full plan from preferences + analysis
+  // 🔹 Generate complete plan
   async function handleGeneratePlan(pref: any) {
     if (!analysis) {
       setError("Analysis data missing. Please run analysis first.");
@@ -50,18 +80,32 @@ export default function PlanningLayout() {
     setPreferences(pref);
     setLoading(true);
     setError(null);
+    setPlan(null);
 
     try {
+      console.log("⚙️ Building prompt with:", { analysis, preferences: pref });
       const prompt = PlanningPromptBuilder.build({ analysis, preferences: pref });
+
       const raw = await PlanningPromptBuilder.mockCallModel(prompt);
+      console.log("📥 Raw model output:", raw);
+
       const parsed = ModelPlanParser.parse(raw);
-      console.log("✅ Parsed Plan:", parsed); // Debug log (remove in prod)
-      setPlan(parsed);
-    } catch (e: any) {
-      console.error("❌ Plan generation failed:", e);
+      console.log("✅ Parsed plan:", parsed);
+
+      const safePlan = {
+        cost: parsed?.cost || {},
+        subsidies: parsed?.subsidies || [],
+        vendors: parsed?.vendors || [],
+        timeline: parsed?.timeline || [],
+        tank: parsed?.tank || {},
+      };
+
+      setPlan(safePlan);
+    } catch (err: any) {
+      console.error("❌ Plan generation failed:", err);
       setError("Failed to generate plan. Please try again.");
     } finally {
-      setLoading(false);
+      setTimeout(() => setLoading(false), 400);
     }
   }
 
@@ -99,7 +143,7 @@ export default function PlanningLayout() {
 
         {/* RIGHT SECTION */}
         <div className="md:col-span-2 space-y-6">
-          {/* Loading State */}
+          {/* 🌀 Loading State */}
           {loading && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -113,14 +157,14 @@ export default function PlanningLayout() {
             </motion.div>
           )}
 
-          {/* Error Message */}
+          {/* 🚨 Error State */}
           {!loading && error && (
             <div className="text-center text-red-400 bg-red-500/10 border border-red-500/30 rounded-xl p-4">
               {error}
             </div>
           )}
 
-          {/* Placeholder before generation */}
+          {/* 💡 Before Generation */}
           {!loading && !plan && !error && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -135,7 +179,7 @@ export default function PlanningLayout() {
             </motion.div>
           )}
 
-          {/* Plan Sections */}
+          {/* 🌧️ Plan Sections */}
           <AnimatePresence>
             {plan && !loading && (
               <>
@@ -143,29 +187,36 @@ export default function PlanningLayout() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
                   className="rounded-2xl p-6 backdrop-blur-md bg-[#0F1412]/60 border border-[#1f2a26] hover:border-emerald-500/30 transition-all"
                 >
                   <TankRecommendationCard analysis={analysis} plan={plan} />
                 </motion.div>
 
-                {/* Subsidies */}
+                {/* Budget Estimator */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
                   transition={{ delay: 0.1 }}
+                  className="rounded-2xl p-6 backdrop-blur-md bg-[#0F1412]/60 border border-[#1f2a26] hover:border-amber-400/30 transition-all"
+                >
+                  <BudgetEstimator analysis={analysis} plan={plan} />
+                </motion.div>
+
+                {/* Subsidy Checker */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
                   className="rounded-2xl p-6 backdrop-blur-md bg-[#0F1412]/60 border border-[#1f2a26] hover:border-amber-500/30 transition-all"
                 >
                   <SubsidyEligibilityChecker analysis={analysis} plan={plan} />
                 </motion.div>
 
-                {/* Vendors */}
+                {/* Vendor Recommendations */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ delay: 0.2 }}
+                  transition={{ delay: 0.3 }}
                   className="rounded-2xl p-6 backdrop-blur-md bg-[#0F1412]/60 border border-[#1f2a26] hover:border-emerald-400/30 transition-all"
                 >
                   <VendorRecommendationPanel analysis={analysis} plan={plan} />
@@ -175,22 +226,24 @@ export default function PlanningLayout() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ delay: 0.3 }}
+                  transition={{ delay: 0.4 }}
                   className="rounded-2xl p-6 backdrop-blur-md bg-[#0F1412]/60 border border-[#1f2a26] hover:border-sky-400/30 transition-all"
                 >
                   <TimelineAndTasksBoard plan={plan} />
                 </motion.div>
 
-                {/* CTA Section */}
+                {/* CTA Footer */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ delay: 0.4 }}
+                  transition={{ delay: 0.5 }}
                   className="flex flex-wrap gap-3 justify-end"
                 >
-                  <DownloadPlanPDF plan={plan} preferences={preferences} analysis={analysis} />
+                  <DownloadPlanPDF
+                    plan={plan}
+                    preferences={preferences}
+                    analysis={analysis}
+                  />
                   <button className="px-4 py-2 rounded-xl border border-amber-400 text-amber-300 hover:bg-amber-400 hover:text-black transition-all">
                     Save Plan
                   </button>
