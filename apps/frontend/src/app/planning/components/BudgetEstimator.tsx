@@ -1,116 +1,145 @@
 "use client";
-
 import { motion } from "framer-motion";
-import { Wallet, Info, IndianRupee } from "lucide-react";
+import { Wallet, Coins, FileText, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
-export default function BudgetEstimator({
-  analysis,
-  plan,
-}: {
+type CostItem = {
+  label: string;
+  amountINR: number;
+  description?: string;
+};
+
+type BudgetEstimatorProps = {
   analysis?: any;
-  plan?: any;
-}) {
-  const costs = plan?.cost || analysis?.economicAnalysis || {};
+  plan?: {
+    cost?: {
+      installationCost?: number;
+      subsidyINR?: number;
+      netCostINR?: number;
+      items?: CostItem[];
+    };
+  };
+};
 
-  const {
-    installationINR = costs.installationCost ?? null,
-    materialsINR = costs.materialsCost ?? null,
-    maintenanceINR = costs.maintenanceCost ?? null,
-    subsidyINR = costs.subsidyINR ?? null,
-    netCostINR = costs.netCostINR ?? null,
-  } = costs;
+export default function BudgetEstimator({ analysis, plan }: BudgetEstimatorProps) {
+  const [open, setOpen] = useState(false);
 
-  const hasBreakdown =
-    installationINR || materialsINR || maintenanceINR || subsidyINR || netCostINR;
+  // ✅ Proper net cost calculation
+  const estimatedCost =
+    plan?.cost?.installationCost ??
+    analysis?.economicAnalysis?.installationCost ??
+    0;
+  const subsidy =
+    plan?.cost?.subsidyINR ??
+    (analysis?.economicAnalysis?.subsidyEligible ? 10000 : 0);
+
+  const netCost =
+    plan?.cost?.netCostINR ??
+    Math.max(estimatedCost - subsidy, 0); // ensure it never goes negative
+
+  const items: CostItem[] =
+    plan?.cost?.items || [
+      { label: "RCC / HDPE Tank", amountINR: Math.round(estimatedCost * 0.6) },
+      { label: "Filtration Unit", amountINR: Math.round(estimatedCost * 0.15) },
+      { label: "Piping & Plumbing", amountINR: Math.round(estimatedCost * 0.15) },
+      { label: "Labor & Misc.", amountINR: Math.round(estimatedCost * 0.1) },
+    ];
+
+  const total = items.reduce((acc, item) => acc + item.amountINR, 0);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className="p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_25px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(16,185,129,0.1)] transition-all duration-500"
+      transition={{ duration: 0.6 }}
+      className="space-y-6 font-[Geist] text-gray-100"
     >
       {/* Header */}
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-2">
-          <Wallet className="h-5 w-5 text-emerald-400" />
-          <h4 className="text-lg font-medium bg-gradient-to-r from-emerald-400 to-amber-300 bg-clip-text text-transparent">
-            Budget Estimate
-          </h4>
-        </div>
-        <Info className="h-4 w-4 text-gray-400 hover:text-amber-300 transition-colors cursor-pointer" />
+      <div className="text-center space-y-1">
+        <h3 className="text-xl font-semibold bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent">
+          Budget Estimator
+        </h3>
+        <p className="text-xs text-gray-400 tracking-wide">
+          Estimated cost breakdown and subsidies 💰
+        </p>
       </div>
 
-      {/* Summary */}
-      <motion.div
-        initial={{ opacity: 0, y: 5 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="p-4 rounded-xl bg-[#0B0E0C]/50 border border-white/10 mb-5 flex items-center justify-between"
-      >
-        <p className="text-gray-300 text-sm">Estimated Installation Cost</p>
-        <p className="text-xl font-semibold text-emerald-300 flex items-center gap-1">
-          <IndianRupee className="h-4 w-4" />
-          {installationINR ? installationINR.toLocaleString() : "—"}
-        </p>
-      </motion.div>
-
-      {/* Cost Breakdown */}
-      {hasBreakdown ? (
-        <div className="grid sm:grid-cols-2 gap-4">
-          {materialsINR && (
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="rounded-xl bg-white/5 border border-white/10 p-3 text-sm backdrop-blur-md"
-            >
-              <p className="text-gray-400">Materials</p>
-              <p className="text-emerald-300 font-semibold mt-1">
-                ₹{materialsINR.toLocaleString()}
-              </p>
-            </motion.div>
-          )}
-
-          {maintenanceINR && (
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="rounded-xl bg-white/5 border border-white/10 p-3 text-sm backdrop-blur-md"
-            >
-              <p className="text-gray-400">Annual Maintenance</p>
-              <p className="text-emerald-300 font-semibold mt-1">
-                ₹{maintenanceINR.toLocaleString()}
-              </p>
-            </motion.div>
-          )}
-
-          {subsidyINR && (
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="rounded-xl bg-white/5 border border-white/10 p-3 text-sm backdrop-blur-md"
-            >
-              <p className="text-gray-400">Eligible Subsidy</p>
-              <p className="text-amber-300 font-semibold mt-1">
-                ₹{subsidyINR.toLocaleString()}
-              </p>
-            </motion.div>
-          )}
-
-          {netCostINR && (
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="rounded-xl bg-white/5 border border-white/10 p-3 text-sm backdrop-blur-md"
-            >
-              <p className="text-gray-400">Net Estimated Cost</p>
-              <p className="text-emerald-400 font-semibold mt-1">
-                ₹{netCostINR.toLocaleString()}
-              </p>
-            </motion.div>
-          )}
+      {/* Summary Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="flex flex-col items-center justify-center bg-[#0F1412]/60 backdrop-blur-md border border-white/10 rounded-xl p-3 shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+          <Wallet className="h-5 w-5 text-amber-400 mb-1" />
+          <p className="text-xs text-gray-400">Installation Cost</p>
+          <p className="text-lg font-semibold text-amber-300">
+            ₹{estimatedCost.toLocaleString()}
+          </p>
         </div>
-      ) : (
-        <p className="text-sm text-gray-500 text-center mt-4">
-          Detailed cost breakdown will be provided by the model.
-        </p>
-      )}
+
+        <div className="flex flex-col items-center justify-center bg-[#0F1412]/60 backdrop-blur-md border border-white/10 rounded-xl p-3 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+          <Coins className="h-5 w-5 text-emerald-400 mb-1" />
+          <p className="text-xs text-gray-400">Estimated Subsidy</p>
+          <p className="text-lg font-semibold text-emerald-300">
+            ₹{subsidy.toLocaleString()}
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center justify-center bg-[#0F1412]/60 backdrop-blur-md border border-white/10 rounded-xl p-3 shadow-[0_0_15px_rgba(56,189,248,0.15)]">
+          <FileText className="h-5 w-5 text-sky-400 mb-1" />
+          <p className="text-xs text-gray-400">Net Cost (after subsidy)</p>
+          <p className="text-lg font-semibold text-sky-300">
+            ₹{netCost.toLocaleString()}
+          </p>
+        </div>
+      </div>
+
+      {/* Accordion for Detailed Breakdown */}
+      <div className="mt-2 border border-white/10 rounded-xl overflow-hidden">
+        <button
+          onClick={() => setOpen(!open)}
+          className="w-full flex justify-between items-center px-4 py-3 bg-[#0F1412]/60 hover:bg-[#141a17]/70 transition-all"
+        >
+          <span className="font-medium text-gray-200 text-sm">
+            View Detailed Cost Breakdown
+          </span>
+          <ChevronDown
+            className={`h-4 w-4 text-amber-300 transition-transform ${
+              open ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+
+        {open && (
+          <div className="p-4 bg-[#0B0E0C]/60 backdrop-blur-md text-sm">
+            <table className="w-full text-left text-gray-300">
+              <thead>
+                <tr className="border-b border-gray-700 text-gray-400">
+                  <th className="pb-1">Item</th>
+                  <th className="pb-1 text-right">Cost (₹)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.map((item, idx) => (
+                  <tr key={idx} className="border-b border-gray-800">
+                    <td className="py-1">{item.label}</td>
+                    <td className="py-1 text-right">
+                      ₹{item.amountINR.toLocaleString()}
+                    </td>
+                  </tr>
+                ))}
+                <tr>
+                  <td className="py-2 font-semibold text-amber-300">Total</td>
+                  <td className="py-2 text-right font-semibold text-amber-300">
+                    ₹{total.toLocaleString()}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p className="text-xs text-gray-500 mt-3 italic">
+              *Values are indicative and may vary based on vendor quotes and
+              regional subsidies.
+            </p>
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 }

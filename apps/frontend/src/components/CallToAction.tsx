@@ -1,65 +1,54 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 export default function CallToAction() {
-  return (
-    <section className="relative flex items-center justify-center min-h-[80vh] overflow-hidden bg-[#0B0B0C] text-gray-200">
-      {/* Soft amber gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,184,77,0.12),transparent_70%)]" />
+  const [dots, setDots] = useState<{ x: number; y: number }[]>([]);
 
-      {/* Subtle animated orbs */}
+  // Generate random positions only on client
+  useEffect(() => {
+    const generated = Array.from({ length: 10 }, () => ({
+      x: Math.random() * 1200,
+      y: Math.random() * 600,
+    }));
+    setDots(generated);
+  }, []);
+
+  return (
+    <section className="relative flex flex-col items-center justify-center py-20">
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(10)].map((_, i) => (
+        {dots.map((dot, i) => (
           <motion.div
             key={i}
             className="absolute w-3 h-3 bg-amber-400/20 rounded-full"
-            initial={{ x: Math.random() * 1200, y: Math.random() * 600, opacity: 0.3 }}
+            initial={{
+              x: dot.x,
+              y: dot.y,
+              opacity: 0.3,
+            }}
             animate={{
-              y: [null, Math.random() * -40],
-              opacity: [0.3, 0.6, 0.3],
+              y: [dot.y, dot.y + 15, dot.y],
+              opacity: [0.3, 0.5, 0.3],
             }}
             transition={{
-              duration: 6 + Math.random() * 6,
+              duration: 5 + i * 0.2,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: Math.random() * 2,
             }}
           />
         ))}
       </div>
 
-      {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="relative z-10 text-center max-w-3xl px-6"
-      >
-        <h2 className="text-5xl sm:text-6xl font-light text-white mb-6 leading-tight">
-          Ready to Discover Your Home’s{" "}
-          <span className="text-amber-400 font-normal">Rainwater Potential?</span>
-        </h2>
-
-        <p className="text-gray-400 text-lg sm:text-xl mb-10 leading-relaxed">
-          Run your free simulation now and see how much you can{" "}
-          <span className="text-amber-400">save and sustain</span>.
-        </p>
-
-        <Link
-          href="#analysis"
-          className="inline-flex items-center gap-2 bg-amber-400 text-black px-10 py-4 rounded-full text-lg font-medium hover:bg-amber-300 transition-all duration-300 group shadow-[0_0_30px_rgba(255,184,77,0.15)]"
-        >
-          Start My Analysis
-          <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </motion.div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-[#0B0B0C] to-transparent" />
+      <h2 className="text-4xl font-semibold bg-gradient-to-r from-amber-400 to-emerald-400 bg-clip-text text-transparent text-center">
+        Ready to Implement Rainwater Harvesting?
+      </h2>
+      <p className="text-gray-400 mt-4 text-sm max-w-lg text-center">
+        Explore your personalized roadmap with cost, vendors, and subsidy insights.
+      </p>
+      <button className="mt-6 px-5 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-emerald-400 text-black font-medium hover:from-amber-300 hover:to-emerald-300 transition-all">
+        Get Started
+      </button>
     </section>
   );
 }

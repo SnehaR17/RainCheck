@@ -1,0 +1,52 @@
+
+> frontend@0.1.0 dev C:\Users\sneha\Documents\sneha_code\RainCheck\apps\frontend
+> next dev
+
+   ▲ Next.js 16.0.1 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.80.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 19.2s
+ ○ Compiling / ...
+ GET / 200 in 24.5s (compile: 23.4s, render: 1099ms)
+ ✓ Compiled in 354ms
+ GET / 200 in 866ms (compile: 247ms, render: 619ms)
+ GET / 200 in 315ms (compile: 21ms, render: 293ms)
+ GET /planning 200 in 3.0s (compile: 2.7s, render: 289ms)
+ ✓ Compiled in 617ms
+ GET /planning 200 in 727ms (compile: 312ms, render: 415ms)
+ ✓ Compiled in 478ms
+ ✓ Compiled in 741ms
+ GET /planning 200 in 636ms (compile: 234ms, render: 402ms)
+ GET /planning 200 in 164ms (compile: 14ms, render: 149ms)
+ GET /planning 200 in 318ms (compile: 145ms, render: 173ms)
+ ✓ Compiled in 292ms
+ ✓ Compiled in 318ms
+ GET /planning 200 in 353ms (compile: 131ms, render: 222ms)
+ ✓ Compiled in 348ms
+ GET /planning 200 in 709ms (compile: 224ms, render: 485ms)
+ GET /planning 200 in 620ms (compile: 206ms, render: 414ms)
+ GET /planning 200 in 223ms (compile: 16ms, render: 207ms)
+ GET /planning 200 in 269ms (compile: 29ms, render: 240ms)
+ ✓ Compiled in 448ms
+ ✓ Compiled in 326ms
+ GET /planning 200 in 725ms (compile: 286ms, render: 439ms)
+ ✓ Compiled in 847ms
+ ✓ Compiled in 169ms
+ GET /planning 200 in 430ms (compile: 67ms, render: 363ms)
+ GET /planning 200 in 167ms (compile: 10ms, render: 157ms)
+ GET /planning 200 in 180ms (compile: 11ms, render: 169ms)
+ GET /planning 200 in 289ms (compile: 127ms, render: 162ms)
+ ✓ Compiled in 241ms
+ GET /planning 200 in 605ms (compile: 231ms, render: 374ms)
+ ✓ Compiled in 469ms
+ ✓ Compiled in 136ms
+ ✓ Compiled in 170ms
+ ✓ Compiled in 362ms
+ ✓ Compiled in 1278ms
+ GET /planning 200 in 554ms (compile: 172ms, render: 382ms)
+ GET /planning 200 in 182ms (compile: 16ms, render: 166ms)
+ GET /planning 200 in 260ms (compile: 24ms, render: 235ms)
+ ✓ Compiled in 841ms
+ GET / 200 in 258ms (compile: 71ms, render: 188ms)
