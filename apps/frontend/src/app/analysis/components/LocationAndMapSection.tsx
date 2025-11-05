@@ -66,7 +66,7 @@ export default function LocationAndMapSection() {
   }, []);
 
   return (
-    <section id="location" className="space-y-8 py-12 px-6 text-gray-300">
+    <section id="location" className="space-y-8 px-6 text-gray-300">
       {/* Heading */}
       <div className="text-center space-y-2">
         <h2 className="text-2xl md:text-3xl font-semibold text-amber-400">

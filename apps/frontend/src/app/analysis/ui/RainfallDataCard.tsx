@@ -82,3 +82,4 @@ function InfoBlock({
     </motion.div>
   );
 }
+

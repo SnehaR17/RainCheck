@@ -1,1 +1,26 @@
 node_modules
+.turbo
+dist
+.next
+
+# Ignore IDE specific files
+.vscode/
+
+# Ignore environment variable files
+.env
+.env.local
+# from all folder
+.env.*
+!.env.example
+!.env.test
+!.env.production
+!.env.development
+!.env.local.example
+!.env.test.example
+!.env.production.example
+!.env.development.example
+
+# .turbo from all folder
+.turbo
+.next
+dist
